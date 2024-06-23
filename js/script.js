@@ -2,6 +2,7 @@ let currentQuestion = {};
 let streak = 0;
 let score = 0;
 let totalQuestions = 0;
+const MAX_DIFFICULTY = 20;
 
 function generateMathQuestion(difficulty) {
     const operators = ['+', '-', '*', '/'];
@@ -79,7 +80,7 @@ function changeQuestionColor() {
 
 function newQuestion() {
     changeQuestionColor(); 
-    const difficulty = Math.min(Math.floor(streak / 2), 20); // increase difficulty every 2 correct answers, max 20
+    const difficulty = Math.min(Math.floor(streak / 1), MAX_DIFFICULTY); // increase difficulty every 2 correct answers
     currentQuestion = generateMathQuestion(difficulty);
     document.getElementById('question').textContent = currentQuestion.question;
     document.getElementById('answer-input').value = '';
@@ -100,6 +101,10 @@ function checkAnswer() {
         document.getElementById('check-btn').disabled = true;
         streak++;
         score++;
+        
+        if (streak === MAX_DIFFICULTY) {
+            showCongratulationsPopup();
+        }
     } else {
         feedback.textContent = 'Incorrect. Try again!';
         streak = 0;
@@ -111,6 +116,31 @@ function updateScore() {
     document.getElementById('questions').textContent = `Question ${totalQuestions}`;
     document.getElementById('score').textContent = `Score: ${score}`;
     document.getElementById('streak').textContent = `Streak: ${streak}`;
+}
+
+function showCongratulationsPopup() {
+    const popup = document.createElement('div');
+    popup.className = 'popup';
+    popup.innerHTML = `
+        <div class="popup-content">
+            <h2>Congratulations!</h2>
+            <p>You've reached the highest difficulty level!</p>
+            <button id="reset-btn">Start Over</button>
+        </div>
+    `;
+    document.body.appendChild(popup);
+
+    document.getElementById('reset-btn').addEventListener('click', () => {
+        document.body.removeChild(popup);
+        resetGenerator();
+    });
+}
+
+function resetGenerator() {
+    streak = 0;
+    score = 0;
+    totalQuestions = 0;
+    newQuestion();
 }
 
 // Event listeners

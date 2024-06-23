@@ -100,7 +100,7 @@ function checkAnswer() {
         document.getElementById('next-btn').disabled = false;
         document.getElementById('check-btn').disabled = true;
         streak++;
-        score++;
+        score += 10; 
         
         if (streak === MAX_DIFFICULTY) {
             showCongratulationsPopup();

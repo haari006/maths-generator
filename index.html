@@ -8,25 +8,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-<div class="container">
-    <h5>I use ChatGPT/other AI tools to assist in partially/all the code. (Y)</h5>
-    <h5>I use StackOverflow or search online on what to do or how to code. (N)</h5>
-    <h5>I have assistance from my coworkers/friends/tech communities. (N)</h5>
-    <h1 id="questions">Question 1</h1>
-    <div id="score-container">
-        <p id="streak">Streak: 0</p>
-        <p id="score">Score: 0</p>
+    <div class="container">
+        <h5>I use ChatGPT/other AI tools to assist in partially/all the code. <span class="badge yes">Y</span></h5>
+        <h5>I use StackOverflow or search online on what to do or how to code. <span class="badge no">N</span></h5>
+        <h5>I have assistance from my coworkers/friends/tech communities. <span class="badge no">N</span></h5>
+        <h1 id="questions">Question 1</h1>
+        <div id="score-container">
+            <p id="streak">Streak: 0</p>
+            <p id="score">Score: 0</p>
+        </div>
+        <div id="question-container">
+            <p id="question"></p>
+            <input type="text" id="answer-input" placeholder="Enter your answer">
+            <button id="check-btn">Check Answer</button>
+            <button id="next-btn" disabled>Next Question</button>
+        </div>
+        <p id="feedback"></p>
     </div>
-    <div id="question-container">
-        <p id="question"></p>
-        <input type="text" id="answer-input" placeholder="Enter your answer">
-        <button id="check-btn">Check Answer</button>
-        <button id="next-btn" disabled>Next Question</button>
-    </div>
-    <p id="feedback"></p>
-</div>
-<script src="/js/script.js"></script>
+    <footer>
+        <p>Made by <a href="https://nextjs-portfolio-seven-gilt.vercel.app/universe" target="_blank"
+                rel="noopener">Haariharan Rajakumar</a></p>
+    </footer>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>

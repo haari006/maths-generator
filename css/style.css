@@ -3,11 +3,12 @@ body {
     background-color: #46178f;
     color: #ffffff;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
 }
 
 .container {
@@ -15,8 +16,9 @@ body {
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
-    width: 100%;
+    max-width: 500px;
+    width: 90%; 
+    margin: 20px auto; 
 }
 
 #question {
@@ -43,6 +45,29 @@ h5 {
     font-size: 0.9em;
     margin: 5px 0;
     color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.8em;
+    text-align: center;
+    min-width: 20px;
+}
+
+.yes {
+    background-color: #4caf50;
+    color: white;
+}
+
+.no {
+    background-color: #f44336;
+    color: white;
 }
 
 #score-container {
@@ -151,9 +176,33 @@ button {
     background-color: #2e1158;
 }
 
-@media (max-width: 480px) {
+footer {
+    position: static; 
+    width: 100%;
+    background-color: rgba(70, 23, 143, 0.9);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9em;
+    margin-top: auto; 
+}
+
+footer a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
     .container {
-        padding: 20px;
+        width: 95%; 
+        padding: 20px; 
     }
 
     h1 {

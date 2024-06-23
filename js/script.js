@@ -1,4 +1,9 @@
-function generateMathQuestion() {
+let currentQuestion = {};
+let streak = 0;
+let score = 0;
+let totalQuestions = 0;
+
+function generateMathQuestion(difficulty) {
     const operators = ['+', '-', '*', '/'];
     let a, b, c, operator, variable;
 
@@ -6,8 +11,10 @@ function generateMathQuestion() {
         operator = operators[Math.floor(Math.random() * operators.length)];
         variable = Math.floor(Math.random() * 4); // 0: A, 1: B, 2: C, 3: operator
 
-        a = Math.floor(Math.random() * 10) + 1; // 1 to 10
-        b = Math.floor(Math.random() * 10) + 1; // 1 to 10
+        // Adjust number range based on difficulty
+        const maxNum = 10 + (difficulty * 5);
+        a = Math.floor(Math.random() * maxNum) + 1;
+        b = Math.floor(Math.random() * maxNum) + 1;
 
         switch (operator) {
             case '+':
@@ -51,3 +58,44 @@ function generateMathQuestion() {
 
     return { question, answer };
 }
+
+function newQuestion() {
+    const difficulty = Math.min(Math.floor(streak / 1), 20); // increase difficulty every correct answers, max 20
+    currentQuestion = generateMathQuestion(difficulty);
+    document.getElementById('question').textContent = currentQuestion.question;
+    document.getElementById('answer-input').value = '';
+    document.getElementById('feedback').textContent = '';
+    document.getElementById('check-btn').disabled = false;
+    document.getElementById('next-btn').disabled = true;
+    totalQuestions++;
+    updateScore();
+}
+
+function checkAnswer() {
+    const userAnswer = document.getElementById('answer-input').value.trim();
+    const feedback = document.getElementById('feedback');
+    
+    if (userAnswer === currentQuestion.answer) {
+        feedback.textContent = 'Correct! Well done!';
+        document.getElementById('next-btn').disabled = false;
+        document.getElementById('check-btn').disabled = true;
+        streak++;
+        score++;
+    } else {
+        feedback.textContent = 'Incorrect. Try again!';
+        streak = 0;
+    }
+    updateScore();
+}
+
+function updateScore() {
+    document.getElementById('questions').textContent = `Question ${totalQuestions}`;
+    document.getElementById('score').textContent = `Score: ${score}/${totalQuestions}`;
+    document.getElementById('streak').textContent = `Streak: ${streak}`;
+}
+
+// Event listeners
+document.getElementById('check-btn').addEventListener('click', checkAnswer);
+document.getElementById('next-btn').addEventListener('click', newQuestion);
+
+newQuestion();

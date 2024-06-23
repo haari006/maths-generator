@@ -59,8 +59,27 @@ function generateMathQuestion(difficulty) {
     return { question, answer };
 }
 
+const colorPairs = [
+    { background: '#46178f', text: '#ffffff' },
+    { background: '#2e9598', text: '#ffffff' },
+    { background: '#ff3355', text: '#ffffff' },
+    { background: '#ffa602', text: '#000000' },
+    { background: '#4caf50', text: '#ffffff' },
+    { background: '#2196f3', text: '#ffffff' },
+    { background: '#9c27b0', text: '#ffffff' },
+    { background: '#ff5722', text: '#ffffff' }
+];
+
+function changeQuestionColor() {
+    const randomPair = colorPairs[Math.floor(Math.random() * colorPairs.length)];
+    const questionElement = document.getElementById('question');
+    questionElement.style.backgroundColor = randomPair.background;
+    questionElement.style.color = randomPair.text;
+}
+
 function newQuestion() {
-    const difficulty = Math.min(Math.floor(streak / 1), 20); // increase difficulty every correct answers, max 20
+    changeQuestionColor(); 
+    const difficulty = Math.min(Math.floor(streak / 2), 20); // increase difficulty every 2 correct answers, max 20
     currentQuestion = generateMathQuestion(difficulty);
     document.getElementById('question').textContent = currentQuestion.question;
     document.getElementById('answer-input').value = '';
@@ -90,7 +109,7 @@ function checkAnswer() {
 
 function updateScore() {
     document.getElementById('questions').textContent = `Question ${totalQuestions}`;
-    document.getElementById('score').textContent = `Score: ${score}/${totalQuestions}`;
+    document.getElementById('score').textContent = `Score: ${score}`;
     document.getElementById('streak').textContent = `Streak: ${streak}`;
 }
 

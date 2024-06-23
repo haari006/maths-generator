@@ -1,0 +1,127 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #46178f;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #673ab7;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
+}
+
+#question {
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #7e57c2; 
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    color: #ffffff; 
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffd700;
+}
+
+h5 {
+    font-size: 0.9em;
+    margin: 5px 0;
+    color: #e0e0e0;
+}
+
+#score-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+#question {
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: #7e57c2;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#answer-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#check-btn {
+    background-color: #4caf50;
+    margin-right: 10px;
+}
+
+#check-btn:hover {
+    background-color: #45a049;
+}
+
+#next-btn {
+    background-color: #2196f3;
+}
+
+#next-btn:hover {
+    background-color: #1e87db;
+}
+
+#next-btn:disabled {
+    background-color: #bbdefb;
+    cursor: not-allowed;
+}
+
+#feedback {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    #question {
+        font-size: 1.5em;
+    }
+
+    button {
+        font-size: 1em;
+    }
+}
